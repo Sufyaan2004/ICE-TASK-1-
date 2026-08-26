@@ -13,7 +13,6 @@ public class ShoeSalesApplication {
         String[] quarters = {"Q1", "Q2", "Q3", "Q4"};
 
         // Display header
-        System.out.println("ULTIMATE SHOE SALES");
         System.out.println("=".repeat(50));
 
         // Display table header
@@ -21,7 +20,6 @@ public class ShoeSalesApplication {
         for (String brand : brands) {
             System.out.printf("%-12s", brand);
         }
-        System.out.println();
         System.out.println("-".repeat(50));
 
         // Display quarterly sales data
@@ -33,11 +31,9 @@ public class ShoeSalesApplication {
             System.out.println();
         }
 
-        System.out.println("=".repeat(50));
         System.out.println();
 
         // Calculate and display statistics for each brand
-        System.out.println("SALES STATISTICS");
         System.out.println("-".repeat(50));
 
         for (int j = 0; j < brands.length; j++) {
@@ -45,15 +41,14 @@ public class ShoeSalesApplication {
             int min = salesData[0][j];
             int max = salesData[0][j];
 
-            for (int i = 0; i < salesData.length; i++) {
-                total += salesData[i][j];
-                if (salesData[i][j] < min) min = salesData[i][j];
-                if (salesData[i][j] > max) max = salesData[i][j];
+            for (int[] salesDatum : salesData) {
+                total += salesDatum[j];
+                if (salesDatum[j] < min) min = salesDatum[j];
+                if (salesDatum[j] > max) max = salesDatum[j];
             }
 
             double average = (double) total / salesData.length;
 
-            System.out.println(brands[j] + ":");
             System.out.printf("  Total: %d%n", total);
             System.out.printf("  Average: %.2f%n", average);
             System.out.printf("  Minimum: %d%n", min);
